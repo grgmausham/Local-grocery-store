@@ -1,0 +1,30 @@
+# items.py
+
+items = {
+    'apple': 2.0,
+    'banana': 1.5,
+    'orange': 3.0,
+    'pineapple': 2.0,
+    'blueberries': 1.5,
+    'yogurt': 1.5,
+    'tofu': 2.0,
+    'spinach': 2.0,
+    'asparagus': 2.5,
+    'sweet potatoes': 1.55,
+    'bread': 2.5,
+    'milk': 2.0,
+    'eggs': 3.5,
+    'cheese': 4.0,
+    'shrimp': 1.75,
+    'chicken': 7.0,
+    'beef': 9.0,
+    'pasta': 2.5,
+    'sugar': 1.0,
+    'salt': 0.5,
+    'pepper': 0.75,
+    'water': 1.0,
+    'juice': 2.5,
+    'soda': 1.5,
+    'beer': 0.70,
+    'wine': 10.0
+}
