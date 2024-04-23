@@ -46,6 +46,25 @@ class LocalStore:
         else:
             print("Invalid quantity. Please select from the list.")
 
+    def remove_from_cart(self, item):
+        """
+        Asks user if they want to remove items from their existing cart with total amount users want to remove
+        """
+        if item.lower() in self.cart:
+            #Remove added items from cart where removed items cannot be more than added items & items cannot be different
+            quantity = input(f"Hom many {item.capitalize()} do you want to remove from your cart? (Limit: {self.cart[item.lower()]})")
+            if quantity.isdigit():
+                quantity = int(quantity)
+                if quantity <= self.cart[item.lower()]:
+                    self.cart[item.lower()] -= quantity * self.items[items.lower()]
+                    print(f"{quantity} {item.capitalize()} removed from your cart.")
+                    self.display_cart()
 
+                else:
+                    print("Invalid quantity. Please enter correct number.")
+            else:
+                print("Please enter correct number.")
+        else:
+            print("Item not found in your cart.")
 
 
