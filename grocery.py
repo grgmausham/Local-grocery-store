@@ -55,26 +55,25 @@ class LocalGroceryStore:
     # Remove items from the cart
     def remove_from_cart(self, item):
         """
-        If user wants to remove certain items from their existing cart user can remove items at the end of their checkout.
-        The items user wants to remove will only be accepted as their names in list
-        The items user wants to remove cannot be the items outside their added items.
-        Users can only remove the amount of items as the total number of added items, user cannot remove more items than added amount on that item.
+        If user wants to remove certain items from their existing cart, user can remove items at the end of their checkout.
+        The items user wants to remove will only be accepted as their names in list.
+        Users can only remove the quantity of items, not the price.
         """
         if item.lower() in self.cart:
-            quantity = input(f"How many {item.capitalize()} do you want to remove from your cart? (Limit: {self.cart[item.lower()]}) ")
+            current_quantity = self.cart[item.lower()] / self.items[item.lower()]  # Calculate current quantity
+            quantity = input(f"How many {item.capitalize()} do you want to remove from your cart? (Limit: {current_quantity}) ")
             if quantity.isdigit():
                 quantity = int(quantity)
-                if quantity <= self.cart[item.lower()]:
+                if quantity <= current_quantity:
                     self.cart[item.lower()] -= quantity * self.items[item.lower()]
                     print(f"{quantity} {item.capitalize()} removed from cart.")
                     self.display_cart()
                 else:
-                    print("Invalid quantity. You cannot remove more items than what's in your cart.")
+                    print(f"Invalid quantity. You cannot remove more than {current_quantity} of {item.capitalize()}.")
             else:
                 print("Invalid quantity. Please enter a number.")
         else:
             print("Item not found in your cart.")
-
  
     #Display cart with items names and sum-total
     def display_cart(self):
@@ -125,6 +124,7 @@ class LocalGroceryStore:
                 else:
                     print("Invalid input. Please enter 'y' or 'n'.")
         print("\n____Thanks for shopping in Local Grocery Store! See you soon____")
+        print("\n__Your total is:")
         self.display_cart()
 
 
