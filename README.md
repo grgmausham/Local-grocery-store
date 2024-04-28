@@ -72,7 +72,7 @@ Also added function where user can be updated with their current condition of th
 </details>
 
 ## Features
-This section will cover how and why each step in the program is included. The below will have screenshots in chronological order of output. Starting with the correct inputs for: item name, quantity, remove item. The validation messages will be shown in the validation testing section, found in the TESTING.md.
+This section will cover how and why each step in the program is included. The below will have screenshots in chronological order of output. Starting with the correct inputs for: item name, quantity, remove item. The validation messages will be shown in the validation testing section.
 
 ### Display Program Introduction:
 
