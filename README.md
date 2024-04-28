@@ -66,7 +66,8 @@ The program flow is clear and asks the user for minimal information with minimal
 Also added function where user can be updated with their current condition of their cart.
  Added a function where if user wants to remove items from their cart they can remove number of items to that of total item added.
 
-
+ 
+### Flowchart for design process 
 ![Lucidchart](/images/lucidchart.png)
 </details>
 
