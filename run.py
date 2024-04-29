@@ -46,7 +46,7 @@ class LocalGroceryStore:
 
             if quantity.isdigit():
                 quantity = int(quantity)
-                if quantity <= 100:
+                if quantity > 0 and quantity <= 100:
                     if item.lower() not in self.cart:
                         self.cart[item.lower()] = (
                                      quantity * self.items[item.lower()]
@@ -59,6 +59,19 @@ class LocalGroceryStore:
 
                     print(f"{quantity} {item.capitalize()} added to cart.")
                     self.display_cart()
+                elif quantity == 0:
+                    print("Quantity cannot be 0.")
+                    while True:
+                        add_option = input(
+                                     "Add valid quantity? (y/n):"
+                                     ).lower()
+                        if add_option == 'y':
+                            self.add_to_cart(item)
+                            break
+                        elif add_option == 'n':
+                            break
+                        else:
+                            print("Invalid input. Please enter 'y' or 'n'.")
                 else:
                     print("You can only add up to 100 of each item.")
             else:
@@ -87,13 +100,16 @@ class LocalGroceryStore:
 
             if quantity.isdigit():
                 quantity = int(quantity)
-                if quantity <= current_quantity:
+                if quantity > 0 and quantity <= current_quantity:
                     self.cart[item.lower()] -= (
                      quantity * self.items[item.lower()]
                                                 )
 
                     print(f"{quantity} {item.capitalize()} removed from cart.")
                     self.display_cart()
+                    return True
+                elif quantity == 0:
+                    print("Quantity cannot be 0.")
                 else:
                     print(
                      f"Invalid quantity. You cannot remove more than "
@@ -104,13 +120,17 @@ class LocalGroceryStore:
                 print("Invalid quantity. Please enter a number.")
         else:
             print("Item not found in your cart.")
+        return False
     # Display cart with items names and sum-total
 
     def display_cart(self):
-        print("\nYour Cart:")
-        for item, price in self.cart.items():
-            print(f"{item.capitalize()}: £{price:.2f}")
-        print(f"Total: £{sum(self.cart.values()):.2f}")
+        if self.cart:
+            print("\nYour Cart:")
+            for item, price in self.cart.items():
+                print(f"{item.capitalize()}: £{price:.2f}")
+            print(f"Total: £{sum(self.cart.values()):.2f}")
+        else:
+            print("\nYour cart is empty.")
 
     # Display message and options on running program
     def start_shopping(self):
@@ -151,7 +171,12 @@ class LocalGroceryStore:
                 if remove_choice == 'y':
                     item_to_remove = input("Enter the item you want to "
                                            "remove from your cart: ").lower()
-                    self.remove_from_cart(item_to_remove)
+                    removed = self.remove_from_cart(item_to_remove)
+                    if removed:
+                        continue_shopping = input("Do you want to continue "
+                                                  "shopping? (y/n): ").lower()
+                        if continue_shopping == 'n':
+                            break
                     if not self.cart:
                         break
                 elif remove_choice == 'n':
@@ -160,8 +185,9 @@ class LocalGroceryStore:
                     print("Invalid input. Please enter 'y' or 'n'.")
         print("\n____Thanks for shopping in Local "
               "Grocery Store! See you soon____")
-        print("\n__Your total is:")
-        self.display_cart()
+        if self.cart:
+            print("\n__Your total is:")
+            self.display_cart()
 
 
 store = LocalGroceryStore()
