@@ -36,7 +36,7 @@ Program live link: The app has succesfully been deployed and can be viewed on <a
 
 ## Overview
 
-<a href="https://grocerystore1-74caed983ca3.herokuapp.com/">Welcome to the Local Grocery Store</a>
+<a href="https://localgrocerystore-0ce05190bccf.herokuapp.com/">Welcome to the Local Grocery Store</a>
 
 This app is a data-driven Python program . The aim is to boost efficiency in the store for shoppers, allowing users to shop for items needed and self-checkout.
 
