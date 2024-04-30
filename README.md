@@ -1,6 +1,6 @@
 
 
-Program live link: The app has succesfully been deployed and can be viewed on <a href="https://grocerystore1-74caed983ca3.herokuapp.com/">Heroku</a>
+Program live link: The app has succesfully been deployed and can be viewed on <a href="https://localgrocerystore-0ce05190bccf.herokuapp.com/">Heroku</a>
 
 
 ---
